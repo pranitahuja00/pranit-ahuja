@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pranit Ahuja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #07090a;
+    --surface: #0d1117;
+    --surface-2: #131920;
+    --border: #1e2a2e;
+    --accent: #00e5a0;
+    --accent-dim: #00b87e;
+    --warm: #ff7c4d;
+    --text: #dde8e2;
+    --muted: #4a6155;
+    --muted-2: #8aaa96;
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ---- DOT GRID BG ---- */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, #1a2e25 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ---- GLOW ORBS ---- */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,229,160,0.08), transparent 70%);
+    top: -150px; right: -100px;
+  }
+  .orb-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,124,77,0.06), transparent 70%);
+    bottom: 10%; left: -150px;
+  }
+
+  /* ---- LAYOUT ---- */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 0;
+    background: linear-gradient(to bottom, rgba(7,9,10,0.95), transparent);
+    backdrop-filter: blur(8px);
+  }
+  nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted-2);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 0 80px;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+  .hero-headline {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -2px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.35s forwards;
+  }
+  .hero-headline .line-2 {
+    color: var(--accent);
+    display: block;
+  }
+  .hero-headline .line-3 {
+    color: var(--muted);
+    display: block;
+  }
+
+  .hero-sub {
+    max-width: 540px;
+    color: var(--muted-2);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.5s forwards;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.65s forwards;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #040806;
+    font-weight: 500;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent-dim);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--muted-2);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover {
+    color: var(--text);
+    border-color: var(--muted);
+    transform: translateY(-1px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.7s 0.8s forwards;
+  }
+  .stat-val {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--text);
+  }
+  .stat-val span { color: var(--accent); }
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ---- SECTION SHARED ---- */
+  section { padding: 100px 0; }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ---- WHY SECTION ---- */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .why-card {
+    background: var(--surface);
+    padding: 36px 32px;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s;
+  }
+  .why-card:hover { background: var(--surface-2); }
+  .why-card:hover::before { transform: scaleX(1); }
+  .why-num {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .why-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .why-body {
+    font-size: 13px;
+    color: var(--muted-2);
+    line-height: 1.75;
+  }
+  .why-body strong { color: var(--text); font-weight: 500; }
+
+  /* ---- PROJECTS ---- */
+  .project-list { display: flex; flex-direction: column; gap: 2px; }
+  .project-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+    transition: all 0.25s;
+    cursor: default;
+  }
+  .project-item:hover {
+    background: var(--surface-2);
+    border-color: var(--muted);
+    transform: translateX(4px);
+  }
+  .project-org {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .project-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .project-desc {
+    font-size: 13px;
+    color: var(--muted-2);
+    line-height: 1.75;
+    max-width: 520px;
+  }
+  .project-desc strong { color: var(--text); font-weight: 500; }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+  }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .project-metric {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .metric-val {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--warm);
+    line-height: 1;
+  }
+  .metric-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ---- STACK ---- */
+  .stack-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .stack-intro {
+    font-size: 13px;
+    color: var(--muted-2);
+    max-width: 480px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+  .stack-groups { display: flex; flex-direction: column; gap: 24px; }
+  .stack-group-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .stack-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    font-size: 12px;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 2px;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .chip.highlight {
+    border-color: rgba(0,229,160,0.3);
+    color: var(--accent);
+    background: rgba(0,229,160,0.05);
+  }
+
+  /* ---- TERMINAL BLOCK ---- */
+  .terminal {
+    background: #060d09;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 64px;
+  }
+  .terminal-bar {
+    padding: 12px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .terminal-title {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .terminal-body {
+    padding: 28px 32px;
+    font-size: 13px;
+    line-height: 2;
+  }
+  .t-line { display: flex; gap: 12px; }
+  .t-prompt { color: var(--accent); flex-shrink: 0; }
+  .t-cmd { color: #a8d5b8; }
+  .t-comment { color: var(--muted); }
+  .t-out { color: var(--muted-2); padding-left: 20px; }
+  .t-blank { height: 12px; }
+
+  /* ---- CONTACT ---- */
+  .contact-section { padding-bottom: 120px; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .contact-headline {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 40px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .contact-headline em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .contact-sub {
+    font-size: 13px;
+    color: var(--muted-2);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    max-width: 380px;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--muted-2);
+    font-size: 13px;
+    transition: color 0.2s;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--surface);
+    transition: all 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,229,160,0.04);
+  }
+  .contact-link-icon { font-size: 16px; }
+  .contact-link-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; }
+  .contact-link-val { color: var(--text); font-size: 13px; }
+
+  /* ---- FOOTER ---- */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 0;
+  }
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-text {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ---- SCROLL REVEAL ---- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- TYPING CURSOR ---- */
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--accent);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 640px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .project-item { grid-template-columns: 1fr; }
+    .project-metric { text-align: left; }
+    .hero-stats { flex-wrap: wrap; gap: 24px; }
+    nav .nav-links { display: none; }
+    .hero-headline { letter-spacing: -1px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-logo">PA</div>
+    <ul class="nav-links">
+      <li><a href="#why">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">AI/ML Engineer / Data Engineer / Data Scientist</div>
+
+    <h1 class="hero-headline">
+      Pranit<br>
+      <span class="line-2">Ahuja.</span>
+      <span class="line-3">Builder.</span>
+    </h1>
+
+    <p class="hero-sub">
+      I build AI and data systems end-to-end, from raw data to deployed product.
+      ML pipelines, LLM applications, data engineering, and production code that ships.
+      I don't stop at the model. I take it all the way.
+    </p>
+
+    <div class="hero-cta">
+      <a href="mailto:pranitahuja00@gmail.com" class="btn btn-primary">Get in touch</a>
+      <a href="https://github.com/pranitahuja00" target="_blank" class="btn btn-secondary">github.com/pranitahuja00</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-val">50<span>-80%</span></div>
+        <div class="stat-label">Query Speed Gained</div>
+      </div>
+      <div>
+        <div class="stat-val">5<span>+</span></div>
+        <div class="stat-label">Years Building</div>
+      </div>
+      <div>
+        <div class="stat-val">3<span>x</span></div>
+        <div class="stat-label">Industries in Production</div>
+      </div>
+      <div>
+        <div class="stat-val"><5<span>%</span></div>
+        <div class="stat-label">Forecast Error Margin</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY AZX -->
+<section id="why">
+  <div class="container">
+    <div class="section-label">What I Bring</div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-title">End-to-End or Nothing</div>
+        <div class="why-body">
+          I don't hand off at the model. At Q2, I owned data migration, orchestration, transformation,
+          and the <strong>GPT-4o query interface</strong> on top, all in one role. At Sage, I built the
+          Databricks pipeline and owned the analytics downstream. Full stack means full ownership.
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-title">Data That Moves</div>
+        <div class="why-body">
+          Pipelines aren't background infrastructure to me, they're the product.
+          Airflow orchestration, PySpark transformations, Snowflake migrations, dbt models.
+          I build the plumbing that makes <strong>data actually flow</strong>
+          from raw signal to clean, reliable, decision-ready output.
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-title">Ships Fast, Finishes Clean</div>
+        <div class="why-body">
+          From React 3D interfaces to ML research pipelines to .NET modules, I've built
+          across the stack in short cycles. I move fast, finish things properly,
+          and leave the codebase <strong>cleaner than I found it</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Selected Work</div>
+    <div class="project-list">
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-org">Q2 Software</div>
+          <div class="project-title">English-to-SQL Interface on Snowflake</div>
+          <div class="project-desc">
+            Built a user-facing application powered by <strong>GPT-4o</strong> that lets non-technical users
+            query financial and transaction data in plain English. Paired with a full SQL Server to Snowflake migration
+            and Airflow orchestration that delivered a <strong>50-80% read speed improvement</strong>.
+          </div>
+          <div class="project-tags">
+            <span class="tag">OpenAI GPT-4o</span>
+            <span class="tag">Snowflake</span>
+            <span class="tag">Airflow</span>
+            <span class="tag">dbt</span>
+            <span class="tag">.NET</span>
+          </div>
+        </div>
+        <div class="project-metric">
+          <div class="metric-val">80%</div>
+          <div class="metric-label">Speed Gain</div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-org">Personal Project</div>
+          <div class="project-title">RAG Web Scraping + Document Enrichment Pipeline</div>
+          <div class="project-desc">
+            Production-style Python pipeline that crawls financial sites, extracts clean content,
+            enriches documents with metadata and topical tags, and outputs
+            <strong>AI-ready JSONL for LLM and RAG workflows</strong>.
+            Features domain-aware BFS crawling, content deduplication via hashing, and Dockerized execution.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Docker</span>
+            <span class="tag">RAG</span>
+            <span class="tag">LLM</span>
+            <span class="tag">BeautifulSoup</span>
+          </div>
+        </div>
+        <div class="project-metric">
+          <div class="metric-val">RAG</div>
+          <div class="metric-label">Production-Ready</div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-org">Sage Therapeutics</div>
+          <div class="project-title">Large-Scale Social Media Analytics Pipeline</div>
+          <div class="project-desc">
+            Built distributed data transformation pipelines in <strong>PySpark on Databricks</strong>
+            to clean, join, and aggregate large-scale social media datasets.
+            Analysis revealed that <strong>4 broadcasters drove 70% of target media consumption</strong>,
+            directly reshaping media strategy.
+          </div>
+          <div class="project-tags">
+            <span class="tag">PySpark</span>
+            <span class="tag">Databricks</span>
+            <span class="tag">Snowflake</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="project-metric">
+          <div class="metric-val">70%</div>
+          <div class="metric-label">Audience Reach</div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-org">Jackson National Insurance</div>
+          <div class="project-title">RILA Cap Rate Forecasting with Deep Learning</div>
+          <div class="project-desc">
+            Applied <strong>LSTM and GRU</strong> models alongside SARIMA to forecast RILA cap rates
+            across ~990 products, uncovering intricate trends in cap rate trajectories
+            and achieving <strong>under 5% error margin</strong> in production forecasts.
+          </div>
+          <div class="project-tags">
+            <span class="tag">LSTM</span>
+            <span class="tag">GRU</span>
+            <span class="tag">SARIMA</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Time Series</span>
+          </div>
+        </div>
+        <div class="project-metric">
+          <div class="metric-val">&lt;5%</div>
+          <div class="metric-label">Error Margin</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack" class="stack-section">
+  <div class="container">
+    <div class="section-label">Stack</div>
+    <p class="stack-intro">
+      Tools I reach for without thinking. Not a checklist, a working vocabulary.
+      Highlighted ones are what I use most in production work.
+    </p>
+    <div class="stack-groups reveal">
+      <div>
+        <div class="stack-group-label">AI + LLMs</div>
+        <div class="stack-chips">
+          <span class="chip highlight">OpenAI API</span>
+          <span class="chip highlight">Claude API</span>
+          <span class="chip">LangChain</span>
+          <span class="chip">Hugging Face</span>
+          <span class="chip">PyTorch</span>
+          <span class="chip highlight">TensorFlow</span>
+          <span class="chip highlight">Scikit-learn</span>
+        </div>
+      </div>
+      <div>
+        <div class="stack-group-label">Data + Pipelines</div>
+        <div class="stack-chips">
+          <span class="chip highlight">Python</span>
+          <span class="chip highlight">SQL</span>
+          <span class="chip highlight">Airflow</span>
+          <span class="chip highlight">dbt</span>
+          <span class="chip highlight">Snowflake</span>
+          <span class="chip">Databricks</span>
+          <span class="chip">PySpark</span>
+          <span class="chip">Pandas / NumPy</span>
+        </div>
+      </div>
+      <div>
+        <div class="stack-group-label">Infrastructure + Dev</div>
+        <div class="stack-chips">
+          <span class="chip highlight">Docker</span>
+          <span class="chip highlight">GitHub</span>
+          <span class="chip">Azure</span>
+          <span class="chip">CI/CD</span>
+          <span class="chip highlight">.NET / C#</span>
+          <span class="chip">REST APIs</span>
+        </div>
+      </div>
+      <div>
+        <div class="stack-group-label">Frontend + Visualization</div>
+        <div class="stack-chips">
+          <span class="chip">React</span>
+          <span class="chip">React Three Fiber</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">HTML/CSS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERMINAL -->
+    <div class="terminal reveal">
+      <div class="terminal-bar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <div class="terminal-title">pranit ~ ml_pipeline</div>
+      </div>
+      <div class="terminal-body">
+        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">python run_pipeline.py --mode full</span></div>
+        <div class="t-blank"></div>
+        <div class="t-line"><span class="t-out">Ingesting raw data sources... done</span></div>
+        <div class="t-line"><span class="t-out">Running dbt transformations on Snowflake... done</span></div>
+        <div class="t-line"><span class="t-out">Feature engineering + validation... done</span></div>
+        <div class="t-line"><span class="t-out">Training model with Airflow-orchestrated job... done</span></div>
+        <div class="t-line"><span class="t-out">Evaluating against holdout set...</span></div>
+        <div class="t-blank"></div>
+        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">evaluate --report</span></div>
+        <div class="t-line"><span class="t-out" style="color: var(--accent);">Accuracy: 97.2%  |  Error margin: 4.8%  |  Latency: 120ms</span></div>
+        <div class="t-line"><span class="t-out">Model registered. Deployment ready. <span class="cursor"></span></span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-label">Let's Talk</div>
+    <div class="contact-grid reveal">
+      <div>
+        <div class="contact-headline">
+          Let's build<br><em>something</em><br>that ships.
+        </div>
+        <p class="contact-sub">
+          I'm looking for roles where data, AI, and real business outcomes
+          are all one connected system. If you're building something hard
+          and need someone who owns it end-to-end, let's talk.
+        </p>
+        <a href="mailto:pranitahuja00@gmail.com" class="btn btn-primary">Get in touch</a>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:pranitahuja00@gmail.com" class="contact-link"><span class="contact-link-icon">@</span><div><span class="contact-link-label">Email</span><span class="contact-link-val">pranitahuja00@gmail.com</span></div></a>
+        <a href="tel:5034227797" class="contact-link">
+          <span class="contact-link-icon">#</span>
+          <div>
+            <span class="contact-link-label">Phone</span>
+            <span class="contact-link-val">(503) 422-7797</span>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/pranit-ahuja" target="_blank" class="contact-link">
+          <span class="contact-link-icon">in</span>
+          <div>
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-val">linkedin.com/in/pranit-ahuja</span>
+          </div>
+        </a>
+        <a href="https://github.com/pranitahuja00" target="_blank" class="contact-link">
+          <span class="contact-link-icon">&lt;/&gt;</span>
+          <div>
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-val">github.com/pranitahuja00</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <span class="footer-text">Pranit Ahuja. Austin, TX</span>
+    <span class="footer-text">2026.</span>
+  </div>
+</footer>
+
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+
+  const showEl = (el) => el.classList.add('visible');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        showEl(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // Fallback: reveal anything still hidden after 1.2s
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(showEl);
+  }, 1200);
+
+  // Stagger why cards
+  document.querySelectorAll('.why-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.08) + 's';
+  });
+</script>
+</body>
+</html>
