@@ -588,18 +588,18 @@
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-tag">Data Engineer / Data Scientist / AI/ML Engineer</div>
+    <div class="hero-tag">Data Scientist / Forecasting / Data Engineer</div>
 
     <h1 class="hero-headline">
       Pranit<br>
       <span class="line-2">Ahuja.</span>
-      <span class="line-3">Builder.</span>
+      <span class="line-3">Forecaster.</span>
     </h1>
 
     <p class="hero-sub">
-      I build AI and data systems end-to-end, from raw data to deployed product.
-      ML pipelines, LLM applications, data engineering, and production code that ships.
-      I don't stop at the model. I take it all the way.
+      I build forecasting systems and data pipelines that surface signal from noise.
+      Time series modeling, probabilistic forecasting, anomaly detection, and the
+      engineering infrastructure to run them reliably at scale.
     </p>
 
     <div class="hero-cta">
@@ -609,20 +609,20 @@
 
     <div class="hero-stats">
       <div>
-        <div class="stat-val">50<span>-80%</span></div>
-        <div class="stat-label">Query Speed Gained</div>
-      </div>
-      <div>
-        <div class="stat-val">5<span>+</span></div>
-        <div class="stat-label">Years Building</div>
-      </div>
-      <div>
-        <div class="stat-val">3<span>x</span></div>
-        <div class="stat-label">Industries in Production</div>
-      </div>
-      <div>
-        <div class="stat-val"><5<span>%</span></div>
+        <div class="stat-val">&lt;5<span>%</span></div>
         <div class="stat-label">Forecast Error Margin</div>
+      </div>
+      <div>
+        <div class="stat-val">6<span>+</span></div>
+        <div class="stat-label">Novel Clusters Discovered</div>
+      </div>
+      <div>
+        <div class="stat-val">80<span>%</span></div>
+        <div class="stat-label">Pipeline Speed Gain</div>
+      </div>
+      <div>
+        <div class="stat-val">3<span>+</span></div>
+        <div class="stat-label">Industries: Fintech, Pharma, Research</div>
       </div>
     </div>
   </div>
@@ -635,30 +635,37 @@
     <div class="why-grid reveal">
       <div class="why-card">
         <div class="why-num">01</div>
-        <div class="why-title">End-to-End or Nothing</div>
+        <div class="why-title">Forecasting from First Principles</div>
         <div class="why-body">
-          I don't hand off at the model. At Q2, I owned data migration, orchestration, transformation,
-          and the <strong>GPT-4o query interface</strong> on top, all in one role. At Sage, I built the
-          Databricks pipeline and owned the analytics downstream. Full stack means full ownership.
+          I don't treat models as black boxes. My Delhi AQI work compared
+          <strong>SARIMA against LSTM</strong> with engineered seasonal features and documented
+          why the statistical baseline won on this particular series. At MSU, I ran
+          end-to-end unsupervised ML on 598 biological variables and uncovered
+          <strong>6 previously undefined morphological clusters</strong>.
+          That's the mindset: understand the data before trusting the model.
         </div>
       </div>
       <div class="why-card">
         <div class="why-num">02</div>
-        <div class="why-title">Data That Moves</div>
+        <div class="why-title">Pipelines Built to Last</div>
         <div class="why-body">
-          Pipelines aren't background infrastructure to me, they're the product.
-          Airflow orchestration, PySpark transformations, Snowflake migrations, dbt models.
-          I build the plumbing that makes <strong>data actually flow</strong>
-          from raw signal to clean, reliable, decision-ready output.
+          Business decisions are only as good as the data feeding them. At Q2, I migrated
+          financial pipelines from SQL Server to Snowflake and cut read times
+          <strong>by up to 80%</strong>, then wired Airflow orchestration and dbt models on top.
+          At Sage, I built distributed PySpark transformations on Databricks
+          and the ingestion workflows that fed them.
+          <strong>Clean, reliable data infrastructure</strong> is the foundation I build on.
         </div>
       </div>
       <div class="why-card">
         <div class="why-num">03</div>
-        <div class="why-title">Ships Fast, Finishes Clean</div>
+        <div class="why-title">Real-Time Signal Detection</div>
         <div class="why-body">
-          From React 3D interfaces to ML research pipelines to .NET modules, I've built
-          across the stack in short cycles. I move fast, finish things properly,
-          and leave the codebase <strong>cleaner than I found it</strong>.
+          My Wikipedia Edit Anomaly Pipeline streams live edits from the Wikimedia
+          SSE API through <strong>Kafka into Databricks Structured Streaming</strong>,
+          applies rolling Z-score anomaly flagging across 1-minute and 5-minute
+          tumbling windows, and surfaces results in a live Streamlit dashboard.
+          Detection at the stream layer, not after the fact.
         </div>
       </div>
     </div>
@@ -673,25 +680,149 @@
 
       <div class="project-item reveal">
         <div>
-          <div class="project-org">Q2 Software &mdash; Helix (Fintech / BaaS)</div>
-          <div class="project-title">English-to-SQL Interface on Snowflake</div>
+          <div class="project-org">Michigan State University Research</div>
+          <div class="project-title">Unsupervised ML Pipeline on Biological High-Dimensional Data</div>
           <div class="project-desc">
-            At <strong>Helix</strong>, Q2's Banking-as-a-Service platform serving fintech companies,
-            migrated data export jobs from SQL Server to Snowflake delivering a <strong>50-80% read speed improvement</strong>,
-            built Airflow orchestration and dbt models, and developed an <strong>English-to-SQL interface</strong>
+            End-to-end unsupervised ML research on <strong>269 sugar-beet leaf samples across 598 variables</strong>
+            on a Linux HPC cluster. Applied PCA to reduce to a 7-component feature space,
+            then ran clustering that surfaced <strong>6 previously undefined morphological clusters</strong>.
+            Translated findings into interactive visualizations adopted by the full research team.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">PCA</span>
+            <span class="tag">HPC</span>
+            <span class="tag">Clustering</span>
+          </div>
+        </div>
+        <div class="project-metric">
+          <div class="metric-val">6</div>
+          <div class="metric-label">Novel Clusters</div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-org">Personal Project</div>
+          <div class="project-title">Wikipedia Edit Anomaly Detection Pipeline</div>
+          <div class="project-desc">
+            Real-time streaming pipeline that ingests live Wikipedia edits from the
+            <strong>Wikimedia SSE API via Kafka</strong> into Databricks Structured Streaming.
+            Bronze-Silver-Gold medallion architecture with feature engineering in the silver layer
+            (revert detection, byte delta, namespace mapping) and
+            <strong>rolling Z-score anomaly flagging</strong> across 1-min and 5-min tumbling windows in the gold layer.
+            Results surface in a live Streamlit dashboard backed by Databricks SQL.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Kafka</span>
+            <span class="tag">Databricks</span>
+            <span class="tag">PySpark</span>
+            <span class="tag">Structured Streaming</span>
+            <span class="tag">Anomaly Detection</span>
+            <span class="tag">Streamlit</span>
+          </div>
+        </div>
+        <div class="project-metric">
+          <div class="metric-val">Live</div>
+          <div class="metric-label">Real-Time Stream</div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-org">Personal Project</div>
+          <div class="project-title">Delhi AQI Forecasting: Statistical vs Deep Learning</div>
+          <div class="project-desc">
+            End-to-end time series analysis on Delhi AQI data (2018-2024),
+            decomposing seasonal, trend, and residual components with
+            <strong>ACF/PACF diagnostics</strong> to guide model selection.
+            Benchmarked a tuned <strong>SARIMA against an LSTM</strong> with engineered seasonal features.
+            SARIMA achieved lower forecast error, demonstrating that statistical baselines
+            can outperform deep learning on structured environmental series.
+          </div>
+          <div class="project-tags">
+            <span class="tag">SARIMA</span>
+            <span class="tag">LSTM</span>
+            <span class="tag">Time Series</span>
+            <span class="tag">Statsmodels</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <div class="project-metric">
+          <div class="metric-val">SARIMA</div>
+          <div class="metric-label">Outperformed LSTM</div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-org">Personal Project</div>
+          <div class="project-title">Electric Power Consumption: Time Series Forecasting</div>
+          <div class="project-desc">
+            Analyzed daily and weekly power consumption in Tetouan, Morocco.
+            ARIMA failed to capture the nonlinear time dependencies in this series.
+            Resolved by implementing <strong>rolling k-step ahead forecasting with sliding window retraining</strong>,
+            achieving substantially improved forecast accuracy across daily and weekly horizons.
+          </div>
+          <div class="project-tags">
+            <span class="tag">ARIMA</span>
+            <span class="tag">Rolling Forecast</span>
+            <span class="tag">Time Series</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <div class="project-metric">
+          <div class="metric-val">k-step</div>
+          <div class="metric-label">Rolling Forecast</div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-org">Q2 Software | Helix (Fintech / BaaS)</div>
+          <div class="project-title">Snowflake Migration and English-to-SQL Interface</div>
+          <div class="project-desc">
+            Migrated data export jobs from SQL Server to Snowflake, delivering a
+            <strong>50-80% read speed improvement</strong> for client reporting pipelines.
+            Built Airflow orchestration and dbt models for downstream analytics,
+            and developed an <strong>English-to-SQL interface</strong>
             powered by GPT-4o for querying financial and transaction data in plain English.
           </div>
           <div class="project-tags">
-            <span class="tag">OpenAI GPT-4o</span>
             <span class="tag">Snowflake</span>
             <span class="tag">Airflow</span>
             <span class="tag">dbt</span>
-            <span class="tag">.NET</span>
+            <span class="tag">OpenAI GPT-4o</span>
+            <span class="tag">SQL Server</span>
           </div>
         </div>
         <div class="project-metric">
           <div class="metric-val">80%</div>
           <div class="metric-label">Speed Gain</div>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-org">Sage Therapeutics</div>
+          <div class="project-title">Large-Scale Social Media Analytics Pipeline</div>
+          <div class="project-desc">
+            Built distributed data transformation pipelines in <strong>PySpark on Databricks</strong>
+            to clean, join, and aggregate large-scale social media datasets.
+            Analysis revealed that <strong>4 broadcasters drove 70% of target media consumption</strong>,
+            directly reshaping media strategy. Ingestion built on Reddit API and web crawling workflows.
+          </div>
+          <div class="project-tags">
+            <span class="tag">PySpark</span>
+            <span class="tag">Databricks</span>
+            <span class="tag">Snowflake</span>
+            <span class="tag">Reddit API</span>
+          </div>
+        </div>
+        <div class="project-metric">
+          <div class="metric-val">70%</div>
+          <div class="metric-label">Audience Reach</div>
         </div>
       </div>
 
@@ -719,52 +850,6 @@
         </div>
       </div>
 
-      <div class="project-item reveal">
-        <div>
-          <div class="project-org">Sage Therapeutics</div>
-          <div class="project-title">Large-Scale Social Media Analytics Pipeline</div>
-          <div class="project-desc">
-            Built distributed data transformation pipelines in <strong>PySpark on Databricks</strong>
-            to clean, join, and aggregate large-scale social media datasets.
-            Analysis revealed that <strong>4 broadcasters drove 70% of target media consumption</strong>,
-            directly reshaping media strategy.
-          </div>
-          <div class="project-tags">
-            <span class="tag">PySpark</span>
-            <span class="tag">Databricks</span>
-            <span class="tag">Snowflake</span>
-            <span class="tag">SQL</span>
-          </div>
-        </div>
-        <div class="project-metric">
-          <div class="metric-val">70%</div>
-          <div class="metric-label">Audience Reach</div>
-        </div>
-      </div>
-
-      <div class="project-item reveal">
-        <div>
-          <div class="project-org">Jackson National Insurance</div>
-          <div class="project-title">RILA Cap Rate Forecasting with Deep Learning</div>
-          <div class="project-desc">
-            Applied <strong>LSTM and GRU</strong> models alongside SARIMA to forecast RILA cap rates
-            across ~990 products, uncovering intricate trends in cap rate trajectories
-            and achieving <strong>under 5% error margin</strong> in production forecasts.
-          </div>
-          <div class="project-tags">
-            <span class="tag">LSTM</span>
-            <span class="tag">GRU</span>
-            <span class="tag">SARIMA</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">Time Series</span>
-          </div>
-        </div>
-        <div class="project-metric">
-          <div class="metric-val">&lt;5%</div>
-          <div class="metric-label">Error Margin</div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -779,15 +864,16 @@
     </p>
     <div class="stack-groups reveal">
       <div>
-        <div class="stack-group-label">AI + LLMs</div>
+        <div class="stack-group-label">Forecasting + ML</div>
         <div class="stack-chips">
-          <span class="chip highlight">OpenAI API</span>
-          <span class="chip highlight">Claude API</span>
-          <span class="chip">LangChain</span>
-          <span class="chip">Hugging Face</span>
-          <span class="chip">PyTorch</span>
-          <span class="chip highlight">TensorFlow</span>
+          <span class="chip highlight">SARIMA / ARIMA</span>
+          <span class="chip highlight">Statsmodels</span>
+          <span class="chip highlight">Prophet</span>
           <span class="chip highlight">Scikit-learn</span>
+          <span class="chip highlight">XGBoost</span>
+          <span class="chip">TensorFlow</span>
+          <span class="chip">PyTorch</span>
+          <span class="chip">Hugging Face</span>
         </div>
       </div>
       <div>
@@ -795,11 +881,12 @@
         <div class="stack-chips">
           <span class="chip highlight">Python</span>
           <span class="chip highlight">SQL</span>
-          <span class="chip highlight">Airflow</span>
-          <span class="chip highlight">dbt</span>
-          <span class="chip highlight">Snowflake</span>
-          <span class="chip">Databricks</span>
-          <span class="chip">PySpark</span>
+          <span class="chip highlight">PySpark</span>
+          <span class="chip highlight">Databricks</span>
+          <span class="chip highlight">Kafka</span>
+          <span class="chip">Airflow</span>
+          <span class="chip">dbt</span>
+          <span class="chip">Snowflake</span>
           <span class="chip">Pandas / NumPy</span>
         </div>
       </div>
@@ -810,17 +897,18 @@
           <span class="chip highlight">GitHub</span>
           <span class="chip">Azure</span>
           <span class="chip">CI/CD</span>
-          <span class="chip highlight">.NET / C#</span>
           <span class="chip">REST APIs</span>
+          <span class="chip">OpenAI API</span>
         </div>
       </div>
       <div>
-        <div class="stack-group-label">Frontend + Visualization</div>
+        <div class="stack-group-label">Analysis + Visualization</div>
         <div class="stack-chips">
-          <span class="chip">React</span>
-          <span class="chip">React Three Fiber</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">HTML/CSS</span>
+          <span class="chip highlight">R</span>
+          <span class="chip">Seaborn</span>
+          <span class="chip">Power BI</span>
+          <span class="chip">Streamlit</span>
+          <span class="chip">Plotly</span>
         </div>
       </div>
     </div>
@@ -831,20 +919,20 @@
         <span class="dot dot-r"></span>
         <span class="dot dot-y"></span>
         <span class="dot dot-g"></span>
-        <div class="terminal-title">pranit ~ ml_pipeline</div>
+        <div class="terminal-title">pranit ~ forecasting_pipeline</div>
       </div>
       <div class="terminal-body">
-        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">python run_pipeline.py --mode full</span></div>
+        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">python run_forecast.py --model sarima --steps 30</span></div>
         <div class="t-blank"></div>
-        <div class="t-line"><span class="t-out">Ingesting raw data sources... done</span></div>
-        <div class="t-line"><span class="t-out">Running dbt transformations on Snowflake... done</span></div>
-        <div class="t-line"><span class="t-out">Feature engineering + validation... done</span></div>
-        <div class="t-line"><span class="t-out">Training model with Airflow-orchestrated job... done</span></div>
-        <div class="t-line"><span class="t-out">Evaluating against holdout set...</span></div>
+        <div class="t-line"><span class="t-out">Loading time series data... done</span></div>
+        <div class="t-line"><span class="t-out">Decomposing trend, seasonality, residuals... done</span></div>
+        <div class="t-line"><span class="t-out">ACF/PACF diagnostics... p=1, d=1, q=1, P=1, D=1, Q=1, s=12</span></div>
+        <div class="t-line"><span class="t-out">Fitting SARIMA... done</span></div>
+        <div class="t-line"><span class="t-out">Generating 30-step ahead probabilistic forecast...</span></div>
         <div class="t-blank"></div>
-        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">evaluate --report</span></div>
-        <div class="t-line"><span class="t-out" style="color: var(--accent);">Accuracy: 97.2%  |  Error margin: 4.8%  |  Latency: 120ms</span></div>
-        <div class="t-line"><span class="t-out">Model registered. Deployment ready. <span class="cursor"></span></span></div>
+        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd">evaluate --report --anomaly-check</span></div>
+        <div class="t-line"><span class="t-out" style="color: var(--accent);">MAE: 3.2  |  RMSE: 4.1  |  Anomalies flagged: 3  |  Z-threshold: 2.0 sigma</span></div>
+        <div class="t-line"><span class="t-out">Forecast registered. Pipeline complete. <span class="cursor"></span></span></div>
       </div>
     </div>
 
@@ -858,12 +946,13 @@
     <div class="contact-grid reveal">
       <div>
         <div class="contact-headline">
-          Let's build<br><em>something</em><br>that ships.
+          Let's build<br><em>something</em><br>that predicts.
         </div>
         <p class="contact-sub">
-          I'm looking for roles where data, AI, and real business outcomes
-          are all one connected system. If you're building something hard
-          and need someone who owns it end-to-end, let's talk.
+          I'm looking for roles in forecasting, time series, and data science,
+          with a long-term path toward a PhD in probabilistic forecasting.
+          If you're working on hard prediction problems and want someone who
+          understands the math and builds the pipelines around it, let's talk.
         </p>
         <a href="mailto:pranitahuja00@gmail.com" class="btn btn-primary">Get in touch</a>
       </div>
