@@ -124,9 +124,10 @@
   .hero-tag {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    letter-spacing: 0.12em;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 32px;
@@ -136,7 +137,7 @@
   .hero-tag::before {
     content: '';
     display: inline-block;
-    width: 24px; height: 1px;
+    width: 32px; height: 2px;
     background: var(--accent);
   }
   .hero-headline {
@@ -594,10 +595,6 @@
       Pranit<br>
       <span class="line-2">Ahuja.</span>
     </h1>
-    <h2>
-      <span class="line-3">Data Scientist & Forecaster.</span>
-    </h2>
-    
 
     <p class="hero-sub">
       I build forecasting systems and data pipelines that surface signal from noise.
@@ -652,7 +649,7 @@
         <div class="why-num">02</div>
         <div class="why-title">Pipelines Built to Last</div>
         <div class="why-body">
-          Business decisions are only as good as the data feeding them. At Q2, I migrated
+          Forecasts are only as good as the data feeding them. At Q2, I migrated
           financial pipelines from SQL Server to Snowflake and cut read times
           <strong>by up to 80%</strong>, then wired Airflow orchestration and dbt models on top.
           At Sage, I built distributed PySpark transformations on Databricks
