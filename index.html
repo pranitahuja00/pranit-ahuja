@@ -358,6 +358,44 @@
     padding: 3px 8px;
     border-radius: 2px;
   }
+  .project-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  .project-links {
+    display: flex;
+    gap: 8px;
+  }
+  .project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: var(--muted-2);
+    transition: all 0.2s;
+  }
+  .project-link-btn:hover {
+    color: var(--text);
+    border-color: var(--muted);
+    transform: translateY(-1px);
+  }
+  .project-link-btn.primary {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .project-link-btn.primary:hover {
+    background: var(--accent);
+    color: #040806;
+  }
   .project-metric {
     text-align: right;
     flex-shrink: 0;
@@ -562,6 +600,7 @@
     .contact-grid { grid-template-columns: 1fr; }
     .project-item { grid-template-columns: 1fr; }
     .project-metric { text-align: left; }
+    .project-side { align-items: flex-start; }
     .hero-stats { flex-wrap: wrap; gap: 24px; }
     nav .nav-links { display: none; }
     .hero-headline { letter-spacing: -1px; }
@@ -723,9 +762,15 @@
             <span class="tag">Streamlit</span>
           </div>
         </div>
-        <div class="project-metric">
-          <div class="metric-val">Live</div>
-          <div class="metric-label">Real-Time Stream</div>
+        <div class="project-side">
+          <div class="project-links">
+            <a href="https://wikipedia-anomaly-pipeline.streamlit.app/" target="_blank" rel="noopener" class="project-link-btn primary">Live Dashboard</a>
+            <a href="https://github.com/pranitahuja00/wikipedia-anomaly-pipeline" target="_blank" rel="noopener" class="project-link-btn">GitHub</a>
+          </div>
+          <div class="project-metric">
+            <div class="metric-val">Live</div>
+            <div class="metric-label">Real-Time Stream</div>
+          </div>
         </div>
       </div>
 
@@ -749,9 +794,14 @@
             <span class="tag">Python</span>
           </div>
         </div>
-        <div class="project-metric">
-          <div class="metric-val">SARIMA</div>
-          <div class="metric-label">Outperformed LSTM</div>
+        <div class="project-side">
+          <div class="project-links">
+            <a href="https://github.com/pranitahuja00/Delhi-AQI-Forecasting" target="_blank" rel="noopener" class="project-link-btn">GitHub</a>
+          </div>
+          <div class="project-metric">
+            <div class="metric-val">SARIMA</div>
+            <div class="metric-label">Outperformed LSTM</div>
+          </div>
         </div>
       </div>
 
@@ -844,9 +894,14 @@
             <span class="tag">BeautifulSoup</span>
           </div>
         </div>
-        <div class="project-metric">
-          <div class="metric-val">RAG</div>
-          <div class="metric-label">Production-Ready</div>
+        <div class="project-side">
+          <div class="project-links">
+            <a href="https://github.com/pranitahuja00/Web-Scraping-Pipeline-LLM-RAG" target="_blank" rel="noopener" class="project-link-btn">GitHub</a>
+          </div>
+          <div class="project-metric">
+            <div class="metric-val">RAG</div>
+            <div class="metric-label">Production-Ready</div>
+          </div>
         </div>
       </div>
 
